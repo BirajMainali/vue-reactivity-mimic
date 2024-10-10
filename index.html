@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Reactivity Mimic</title>
+</head>
+
+<body>
+    <h1>Vue Reactivity Mimic</h1>
+    <div class="container">
+        <label for="countInput">Input :</label>
+        <input type="text" id="countInput" />
+        <h2 id="currentCount"></h2>
+    </div>
+    <script src="mimic.js"></script>
+    <script>
+        const countRef = ref("");
+
+        watchEffect(() => {
+            console.log('Count changed:', countRef.value);
+            __('#currentCount').textContent = countRef.value;
+        });
+
+        __('#countInput').addEventListener('input', (e) => {
+            countRef.value = e.target.value;
+        });
+
+
+
+    </script>
+</body>
+
+</html>
